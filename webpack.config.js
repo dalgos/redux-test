@@ -1,11 +1,17 @@
 module.exports = {
-  entry: { redux: './srcs' },
+  entry: { redux: __dirname + '/srcs/index.js' },
   output: {
-    path: './public/js',
+    path: __dirname + '/public/js',
     filename: '[name].bundle.js'
   },
   resolve: {
-
+    modules: [
+      'node_modules',
+      __dirname + '/srcs'
+    ],
+    alias: {
+      comps$: __dirname + '/srcs/components'
+    }
   },
   module: {
     loaders: [
@@ -18,5 +24,6 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  watch: true
 };
